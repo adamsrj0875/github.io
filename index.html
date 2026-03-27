@@ -12,6 +12,8 @@
     --navy: #0F2744;
     --blue: #1A56A0;
     --accent: #2E8FDD;
+    --red: #B22234;
+    --red-light: #F9EAEC;
     --light-accent: #E8F3FC;
     --slate: #4A5568;
     --light: #F7F9FC;
@@ -50,9 +52,10 @@
   nav.scrolled { box-shadow: 0 2px 20px rgba(15,39,68,0.08); }
   .nav-logo {
     font-family: var(--serif);
-    font-size: 1.3rem;
+    font-size: 1.75rem;
     color: var(--navy);
     letter-spacing: -0.5px;
+    font-weight: 700;
   }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
@@ -63,15 +66,15 @@
     letter-spacing: 0.02em;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover { color: var(--red); }
   .nav-cta {
-    background: var(--navy);
+    background: var(--red);
     color: var(--white) !important;
     padding: 0.5rem 1.25rem;
     border-radius: 6px;
     transition: background 0.2s !important;
   }
-  .nav-cta:hover { background: var(--blue) !important; color: var(--white) !important; }
+  .nav-cta:hover { background: #8B1A28 !important; color: var(--white) !important; }
 
   /* HERO */
   .hero {
@@ -88,7 +91,8 @@
     inset: 0;
     background:
       radial-gradient(ellipse 80% 60% at 70% 50%, rgba(46,143,221,0.15) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(26,86,160,0.2) 0%, transparent 50%);
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(26,86,160,0.2) 0%, transparent 50%),
+      radial-gradient(ellipse 30% 40% at 10% 20%, rgba(178,34,52,0.18) 0%, transparent 50%);
   }
   .hero-grid {
     position: absolute;
@@ -104,6 +108,17 @@
     margin: 0 auto;
     width: 100%;
   }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: -1.5px;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.1s forwards;
+  }
+  .hero-name span { color: var(--red); }
   .hero-eyebrow {
     display: inline-flex;
     align-items: center;
@@ -112,7 +127,7 @@
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: rgba(255,255,255,0.75);
     margin-bottom: 1.5rem;
     opacity: 0;
     animation: fadeUp 0.6s 0.2s forwards;
@@ -120,8 +135,15 @@
   .hero-eyebrow::before {
     content: '';
     display: block;
-    width: 2rem;
-    height: 1px;
+    width: 1rem;
+    height: 2px;
+    background: var(--red);
+  }
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 1rem;
+    height: 2px;
     background: var(--accent);
   }
   .hero h1 {
@@ -136,7 +158,7 @@
   }
   .hero h1 em {
     font-style: italic;
-    color: var(--accent);
+    color: var(--red);
   }
   .hero-sub {
     font-size: 1.15rem;
@@ -158,7 +180,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: var(--accent);
+    background: var(--red);
     color: var(--white);
     text-decoration: none;
     padding: 0.85rem 1.75rem;
@@ -167,7 +189,7 @@
     font-size: 0.925rem;
     transition: background 0.2s, transform 0.15s;
   }
-  .btn-primary:hover { background: #1a7abf; transform: translateY(-1px); }
+  .btn-primary:hover { background: #8B1A28; transform: translateY(-1px); }
   .btn-outline {
     display: inline-flex;
     align-items: center;
@@ -203,6 +225,11 @@
     min-width: 140px;
     backdrop-filter: blur(8px);
   }
+  .stat-card:nth-child(2) {
+    border-color: rgba(178,34,52,0.5);
+    background: rgba(178,34,52,0.08);
+  }
+  .stat-card:nth-child(2) .stat-number { color: #E88090; }
   .stat-number {
     font-family: var(--serif);
     font-size: 2rem;
@@ -225,7 +252,7 @@
     font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--red);
     margin-bottom: 0.75rem;
     display: flex;
     align-items: center;
@@ -235,8 +262,8 @@
     content: '';
     flex: 1;
     max-width: 3rem;
-    height: 1px;
-    background: var(--accent);
+    height: 2px;
+    background: var(--red);
   }
   .section-title {
     font-family: var(--serif);
@@ -282,6 +309,7 @@
     padding: 1.25rem 1.5rem;
     transition: transform 0.2s, box-shadow 0.2s;
   }
+  .highlight-card:nth-child(odd) { border-left-color: var(--red); }
   .highlight-card:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(15,39,68,0.08); }
   .highlight-card h4 { font-size: 0.875rem; font-weight: 600; color: var(--navy); margin-bottom: 0.25rem; }
   .highlight-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.5; }
@@ -306,7 +334,9 @@
     color: var(--navy);
     transition: background 0.2s, border-color 0.2s, transform 0.15s;
   }
+  .competency-item:nth-child(odd) .competency-dot { background: var(--red); }
   .competency-item:hover { background: var(--light-accent); border-color: var(--accent); transform: translateY(-2px); }
+  .competency-item:nth-child(odd):hover { background: var(--red-light); border-color: var(--red); }
   .competency-dot {
     width: 6px; height: 6px;
     border-radius: 50%;
@@ -323,18 +353,19 @@
     left: 0;
     top: 8px;
     bottom: 0;
-    width: 1px;
-    background: var(--border);
+    width: 2px;
+    background: linear-gradient(to bottom, var(--red), var(--accent));
   }
   .job {
     position: relative;
     padding-left: 2.5rem;
     margin-bottom: 3.5rem;
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1;
+    transform: translateY(0);
     transition: opacity 0.5s, transform 0.5s;
   }
-  .job.visible { opacity: 1; transform: translateY(0); }
+  .job.animate { opacity: 0; transform: translateY(20px); }
+  .job.animate.visible { opacity: 1; transform: translateY(0); }
   .job::before {
     content: '';
     position: absolute;
@@ -346,6 +377,11 @@
     border: 2px solid var(--white);
     box-shadow: 0 0 0 2px var(--accent);
   }
+  .job.red-dot::before {
+    background: var(--red);
+    box-shadow: 0 0 0 2px var(--red);
+  }
+  .job.red-dot .job-bullets li::before { color: var(--red); }
   .job-header { margin-bottom: 0.75rem; }
   .job-title { font-family: var(--serif); font-size: 1.3rem; color: var(--navy); margin-bottom: 0.2rem; }
   .job-meta {
@@ -379,8 +415,8 @@
   /* SKILLS */
   #skills { background: var(--navy); }
   #skills .section-title { color: var(--white); }
-  #skills .section-label { color: rgba(255,255,255,0.5); }
-  #skills .section-label::after { background: rgba(255,255,255,0.2); }
+  #skills .section-label { color: rgba(255,255,255,0.6); }
+  #skills .section-label::after { background: rgba(255,255,255,0.25); }
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -393,6 +429,8 @@
     padding: 1.5rem;
     transition: background 0.2s, transform 0.2s;
   }
+  .skill-card:nth-child(odd) { border-top: 2px solid rgba(178,34,52,0.6); }
+  .skill-card:nth-child(even) { border-top: 2px solid rgba(46,143,221,0.6); }
   .skill-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-2px); }
   .skill-card-label {
     font-size: 0.75rem;
@@ -469,7 +507,7 @@
   .form-group textarea:focus { border-color: var(--accent); background: var(--white); }
   .form-group textarea { resize: vertical; min-height: 120px; }
   .form-submit {
-    background: var(--navy);
+    background: var(--red);
     color: var(--white);
     border: none;
     padding: 0.9rem 2rem;
@@ -481,14 +519,14 @@
     transition: background 0.2s, transform 0.15s;
     align-self: flex-start;
   }
-  .form-submit:hover { background: var(--blue); transform: translateY(-1px); }
+  .form-submit:hover { background: #8B1A28; transform: translateY(-1px); }
 
   /* FOOTER */
   footer {
     background: var(--navy);
     padding: 2rem 3rem;
     text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.08);
+    border-top: 3px solid var(--red);
   }
   footer p { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
 
@@ -502,15 +540,87 @@
     to { opacity: 1; transform: translate(0, -50%); }
   }
 
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--navy);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* MOBILE MENU DRAWER */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(15,39,68,0.97);
+    z-index: 99;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-family: var(--serif);
+    opacity: 0.85;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .mobile-menu a:hover { opacity: 1; color: var(--red); }
+  .mobile-menu .mobile-cta {
+    margin-top: 1rem;
+    background: var(--red);
+    color: var(--white) !important;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: 1 !important;
+  }
+
   /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
+    .hamburger { display: flex; }
     .hero { padding: 7rem 1.5rem 4rem; }
     .hero-stats { display: none; }
-    section { padding: 4rem 1.5rem; }
-    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-name { font-size: clamp(2.5rem, 12vw, 4rem); letter-spacing: -1px; }
+    .hero h1 { font-size: clamp(1.75rem, 7vw, 3rem); }
+    .hero-sub { font-size: 1rem; }
+    section { padding: 3.5rem 1.25rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
     .form-row { grid-template-columns: 1fr; }
+    .competency-grid { grid-template-columns: 1fr 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: clamp(1.75rem, 6vw, 2.5rem); }
+    .job-meta { flex-direction: column; align-items: flex-start; gap: 0.2rem; }
+    .job-sep { display: none; }
+    .stat-card { min-width: 110px; padding: 1rem; }
+  }
+
+  @media (max-width: 480px) {
+    .competency-grid { grid-template-columns: 1fr; }
+    .hero-name { font-size: clamp(2rem, 10vw, 3rem); }
+    .btn-primary, .btn-outline { width: 100%; justify-content: center; }
   }
 </style>
 </head>
@@ -526,16 +636,30 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="Jeffrey Adams Resume 0326.pdf" download class="nav-cta">Download Resume</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#competencies" class="mobile-link">Competencies</a>
+  <a href="#experience" class="mobile-link">Experience</a>
+  <a href="#skills" class="mobile-link">Skills</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="Jeffrey Adams Resume 0326.pdf" download class="mobile-cta">Download Resume</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content">
+    <div class="hero-name">Jeffrey <span>Adams</span></div>
     <div class="hero-eyebrow">Release &amp; Program Manager</div>
-    <h1>Shipping software<br>at <em>every scale.</em></h1>
-    <p class="hero-sub">From startups to mid-size to big tech — I've led complex release cycles, built QA infrastructure from the ground up, and kept high-stakes programs on track across mobile, embedded, and cloud platforms.</p>
+    <h1>Software delivery<br>across <em>every platform.</em></h1>
+    <p class="hero-sub">Release and Program Manager with experience in software quality engineering, automation infrastructure, and cross-platform product delivery. I've worked at startups, mid-size companies, and big tech.</p>
     <div class="hero-actions">
       <a href="#experience" class="btn-primary">View My Experience ↓</a>
       <a href="Jeffrey Adams Resume 0326.pdf" download class="btn-outline">Download Resume</a>
@@ -561,29 +685,29 @@
 <section id="about">
   <div class="section-inner">
     <div class="section-label">About Me</div>
-    <h2 class="section-title">Built for complexity.<br>Wired for delivery.</h2>
+    <h2 class="section-title">Release management<br>across platforms and teams.</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>I'm a Release and Program Manager with experience operating at <strong>every stage of company growth</strong> — from early-stage startups to established mid-size companies to consumer-scale big tech.</p>
-        <p>At <strong>Apple</strong>, I owned the release lifecycle for Maps Client across six OS platforms. At <strong>TiVo</strong>, I managed a 500+ device test lab and led cross-functional QE programs spanning onshore and offshore teams. At <strong>Fetch Robotics</strong>, I was brought in to build and restructure QE infrastructure from scratch in a fast-moving startup environment.</p>
-        <p>I thrive at the intersection of engineering, quality, and product — aligning teams, surfacing risk early, and making sure software ships with confidence.</p>
+        <p>I'm a Release and Program Manager with experience in software quality engineering and cross-platform product delivery. I've worked at <strong>Apple</strong>, <strong>TiVo</strong>, and <strong>Fetch Robotics</strong>, in roles spanning release management, QE leadership, and program management.</p>
+        <p>At Apple, I coordinated the release lifecycle for Maps Client across iOS, macOS, watchOS, tvOS, CarPlay, and visionOS. At TiVo, I led QE readiness across multiple device platforms and managed a lab of 500+ set-top boxes. At Fetch Robotics, I managed releases for FetchCore and restructured the QE test infrastructure into TestRail.</p>
+        <p>I work closely with Engineering, QA, Product, and executive teams to keep releases on track and surface issues early.</p>
       </div>
       <div class="about-highlights">
         <div class="highlight-card">
-          <h4>Big Tech Experience</h4>
-          <p>Led Apple Maps Client releases across iOS, macOS, watchOS, tvOS, CarPlay, and visionOS.</p>
+          <h4>Apple Maps Client</h4>
+          <p>Coordinated releases across iOS, macOS, watchOS, tvOS, CarPlay, visionOS, and the web.</p>
         </div>
         <div class="highlight-card">
-          <h4>Startup Adaptability</h4>
-          <p>Joined Fetch Robotics early to restructure test infrastructure and establish scalable QE processes.</p>
+          <h4>Fetch Robotics</h4>
+          <p>Managed FetchCore releases and restructured test plans and cases into TestRail.</p>
         </div>
         <div class="highlight-card">
-          <h4>Infrastructure at Scale</h4>
-          <p>Managed 500+ device lab across 28 platforms at TiVo, supporting automated regression and performance testing.</p>
+          <h4>TiVo</h4>
+          <p>Led QE readiness across multiple device platforms and managed a 500+ device test lab across 28 platforms.</p>
         </div>
         <div class="highlight-card">
-          <h4>Cross-Functional Leadership</h4>
-          <p>Consistent track record bridging Engineering, QA, Product, and executive stakeholders across every role.</p>
+          <h4>Cross-Functional Work</h4>
+          <p>Regular collaboration with Engineering, QA, Product, Design, and executive stakeholders across all roles.</p>
         </div>
       </div>
     </div>
@@ -594,7 +718,7 @@
 <section id="competencies">
   <div class="section-inner">
     <div class="section-label">Core Competencies</div>
-    <h2 class="section-title">What I bring<br>to the table.</h2>
+    <h2 class="section-title">Areas of expertise.</h2>
     <div class="competency-grid">
       <div class="competency-item"><span class="competency-dot"></span>Cross-Platform Release Management</div>
       <div class="competency-item"><span class="competency-dot"></span>Stakeholder Communication</div>
@@ -614,10 +738,10 @@
 <section id="experience">
   <div class="section-inner">
     <div class="section-label">Work Experience</div>
-    <h2 class="section-title">Where I've been.<br>What I've built.</h2>
+    <h2 class="section-title">Work history.</h2>
     <div class="timeline">
 
-      <div class="job">
+      <div class="job red-dot">
         <div class="job-header">
           <div class="job-title">Software Release Manager, Maps Client</div>
           <div class="job-meta">
@@ -661,7 +785,7 @@
         </ul>
       </div>
 
-      <div class="job">
+      <div class="job red-dot">
         <div class="job-header">
           <div class="job-title">Program Manager &amp; Senior Engineer, QE</div>
           <div class="job-meta">
@@ -743,7 +867,7 @@
 <section id="skills">
   <div class="section-inner">
     <div class="section-label">Technical Proficiencies</div>
-    <h2 class="section-title">Tools &amp; technologies<br>I work with.</h2>
+    <h2 class="section-title">Tools and technologies.</h2>
     <div class="skills-grid">
       <div class="skill-card">
         <div class="skill-card-label">Project &amp; Release Management</div>
@@ -792,7 +916,7 @@
     <h2 class="section-title">Let's connect.</h2>
     <div class="contact-grid">
       <div>
-        <p class="section-intro">I'm open to new opportunities in release management, program management, and QE leadership. Feel free to reach out directly or send a message below.</p>
+        <p class="section-intro">I'm open to new opportunities in release management, program management, and QE leadership. Feel free to reach out directly or send a message.</p>
         <div class="contact-info">
           <a href="tel:5103664117" class="contact-item">
             <div class="contact-icon">📞</div>
@@ -847,6 +971,21 @@
     navbar.classList.toggle('scrolled', window.scrollY > 20);
   });
 
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-link, .mobile-cta').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
   const jobs = document.querySelectorAll('.job');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
@@ -855,7 +994,10 @@
       }
     });
   }, { threshold: 0.1 });
-  jobs.forEach(job => observer.observe(job));
+  jobs.forEach(job => {
+    job.classList.add('animate');
+    observer.observe(job);
+  });
 
   function handleSubmit(e) {
     e.preventDefault();
